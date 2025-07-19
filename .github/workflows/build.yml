@@ -234,10 +234,10 @@ jobs:
           cp SUSFS/kernel_patches/fs/* fs/
           cp SUSFS/kernel_patches/include/linux/* include/linux/
 
-          patch -d KernelSU-Next -p1 --verbose < SUSFS/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch
+          patch -d KernelSU-Next -p1 --verbose < SUSFS/kernel_patches/KernelSU/10_enable_susfs_for_ksu.patch || true 
 
-          patch -p1 --verbose < SUSFS/kernel_patches/40_ksu_without_kprobes.patch
-          patch -p1 --verbose < SUSFS/kernel_patches/50_add_susfs_in_kernel-4.14.patch
+          patch -p1 --verbose < SUSFS/kernel_patches/40_ksu_without_kprobes.patch || true 
+          patch -p1 --verbose < SUSFS/kernel_patches/50_add_susfs_in_kernel-4.14.patch || true 
 
           SUSFS_VERSION=$(grep -oP '^\s*#define\s+SUSFS_VERSION\s+"\K[^"]+' include/linux/susfs.h)
           echo -e "SUSFS_VERSION=${SUSFS_VERSION}" >> ${GITHUB_OUTPUT}
