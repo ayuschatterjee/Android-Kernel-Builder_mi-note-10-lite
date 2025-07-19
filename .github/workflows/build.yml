@@ -266,7 +266,8 @@ jobs:
           echo -e "CONFIG_KSU_SUSFS_SUS_SU=n" >> arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
 
           cat arch/${{ env.arch }}/configs/${{ env.DEFCONFIG_NAME }}
-
+          find . -name "*.rej" -exec bash -c 'echo "--- {} ---"; cat "{}"' \;
+          
       # TODO: maybe use this instead: https://github.com/tomxi1997/lxc-docker-support-for-android/
       - name: 🚢 Setup LXC docker
         working-directory: ${{ env.KERNEL_NAME }}
